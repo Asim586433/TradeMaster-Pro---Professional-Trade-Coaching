@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradeMaster Pro | Professional Trade Coaching</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #0a3d62;
+            --secondary: #3c6382;
+            --accent: #f6b93b;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --danger: #e74c3c;
+            --gray: #7f8c8d;
+            --light-gray: #ecf0f1;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --radius: 8px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--accent);
+            color: var(--dark);
+            border-radius: var(--radius);
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: #e5a82b;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #083354;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        h1 {
+            font-size: 3rem;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .section-header {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            font-weight: 500;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding-top: 150px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+        }
+        
+        .hero h1 {
+            margin-bottom: 25px;
+            color: white;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 35px;
+            opacity: 0.9;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        /* Membership Plans */
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .plan-card {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .plan-card.popular {
+            border: 3px solid var(--accent);
+        }
+        
+        .plan-badge {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 8px 30px;
+            transform: rotate(45deg);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .plan-header {
+            padding: 30px;
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+        }
+        
+        .plan-price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 15px 0;
+        }
+        
+        .plan-price span {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        .plan-features {
+            padding: 30px;
+        }
+        
+        .plan-features ul {
+            list-style: none;
+        }
+        
+        .plan-features ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .plan-features ul li:last-child {
+            border-bottom: none;
+        }
+        
+        .plan-features ul li i {
+            color: var(--success);
+            margin-right: 10px;
+        }
+        
+        .plan-button {
+            padding: 30px;
+            padding-top: 0;
+            text-align: center;
+        }
+        
+        /* Resource Library */
+        .resource-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background-color: white;
+            border: 1px solid var(--light-gray);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .resource-card {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .resource-img {
+            height: 180px;
+            width: 100%;
+            background-color: var(--light-gray);
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .resource-content {
+            padding: 20px;
+        }
+        
+        .resource-access {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .resource-access.free {
+            background-color: #d5f4e6;
+            color: var(--success);
+        }
+        
+        .resource-access.premium {
+            background-color: #fef9e7;
+            color: var(--accent);
+        }
+        
+        .resource-access.pro {
+            background-color: #e8f4fc;
+            color: var(--primary);
+        }
+        
+        /* Podcast Section */
+        .podcast-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .podcast-card {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .podcast-img {
+            height: 180px;
+            width: 100%;
+            background-color: var(--light-gray);
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .podcast-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .podcast-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: auto;
+            padding-top: 15px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-links h4 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Dashboard Styles */
+        .dashboard-container {
+            display: flex;
+            min-height: calc(100vh - 80px);
+            margin-top: 80px;
+        }
+        
+        .dashboard-sidebar {
+            width: 250px;
+            background-color: var(--primary);
+            color: white;
+            padding: 30px 0;
+            position: fixed;
+            height: calc(100vh - 80px);
+            overflow-y: auto;
+        }
+        
+        .dashboard-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 40px;
+            background-color: #f5f7fa;
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+        }
+        
+        .sidebar-menu li {
+            margin-bottom: 5px;
+        }
+        
+        .sidebar-menu li a {
+            display: block;
+            padding: 15px 30px;
+            transition: var(--transition);
+        }
+        
+        .sidebar-menu li a:hover, .sidebar-menu li a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--accent);
+        }
+        
+        .sidebar-menu li a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .dashboard-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .dashboard-card {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+        }
+        
+        .dashboard-card-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-right: 20px;
+        }
+        
+        .dashboard-card-info h3 {
+            margin-bottom: 5px;
+            font-size: 1.8rem;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: var(--radius);
+            width: 90%;
+            max-width: 500px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .modal-header {
+            padding: 25px;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-body {
+            padding: 25px;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        /* Login/Register Pages */
+        .auth-container {
+            display: flex;
+            min-height: calc(100vh - 80px);
+            margin-top: 80px;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            background-color: #f5f7fa;
+        }
+        
+        .auth-box {
+            width: 100%;
+            max-width: 450px;
+            background-color: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        
+        .auth-tabs {
+            display: flex;
+        }
+        
+        .auth-tab {
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+            background-color: var(--light-gray);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+        
+        .auth-tab.active {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        .auth-form {
+            padding: 30px;
+        }
+        
+        .auth-form.active {
+            display: block;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .hero {
+                padding-top: 130px;
+            }
+            
+            .dashboard-sidebar {
+                width: 220px;
+            }
+            
+            .dashboard-content {
+                margin-left: 220px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                display: none;
+                width: 100%;
+                margin-top: 20px;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .auth-buttons {
+                margin-top: 20px;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .dashboard-container {
+                flex-direction: column;
+            }
+            
+            .dashboard-sidebar {
+                position: static;
+                width: 100%;
+                height: auto;
+            }
+            
+            .dashboard-content {
+                margin-left: 0;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            section {
+                padding: 60px 0;
+            }
+            
+            .hero {
+                padding-top: 120px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container container">
+            <div class="logo">Trade<span>Master</span> Pro</div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#membership">Membership</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#podcast">Podcast</a></li>
+                    <li><a href="#articles">Articles</a></li>
+                    <li><a href="#dashboard" id="dashboardLink">Dashboard</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <button class="btn btn-outline" id="loginBtn">Login</button>
+                    <button class="btn btn-primary" id="signupBtn">Sign Up</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Member Login</h3>
+                <button class="close-modal" id="closeLoginModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email Address</label>
+                        <input type="email" id="loginEmail" class="form-control" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" class="form-control" placeholder="Your password" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Login to Account</button>
+                    </div>
+                    <div class="text-center">
+                        <p>Don't have an account? <a href="#" id="switchToSignup">Sign up here</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create Account</h3>
+                <button class="close-modal" id="closeSignupModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="signupForm">
+                    <div class="form-group">
+                        <label for="signupName">Full Name</label>
+                        <input type="text" id="signupName" class="form-control" placeholder="John Smith" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email Address</label>
+                        <input type="email" id="signupEmail" class="form-control" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" class="form-control" placeholder="Create a password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="membershipPlan">Select Membership Plan</label>
+                        <select id="membershipPlan" class="form-control" required>
+                            <option value="">Choose a plan</option>
+                            <option value="basic">Basic - $29/month</option>
+                            <option value="premium">Premium - $79/month</option>
+                            <option value="pro">Pro - $149/month</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
+                    </div>
+                    <div class="text-center">
+                        <p>Already have an account? <a href="#" id="switchToLogin">Login here</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Homepage -->
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Master The Markets With Professional Trade Coaching</h1>
+                    <p>Join thousands of successful traders who have transformed their results with our structured coaching programs, resources, and community support.</p>
+                    <div class="hero-buttons">
+                        <a href="#membership" class="btn btn-primary">View Membership Plans</a>
+                        <a href="#resources" class="btn btn-outline">Explore Free Resources</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <h2>What You'll Get Access To</h2>
+                    <p>Our comprehensive trade coaching platform provides everything you need to succeed</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3>Expert Video Lessons</h3>
+                        <p>Access hundreds of hours of professionally recorded trading lessons, market analysis tutorials, and strategy breakdowns.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Live Coaching Sessions</h3>
+                        <p>Weekly live Q&A sessions with professional traders and monthly mastermind groups for personalized feedback.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Trading Tools & Resources</h3>
+                        <p>Proprietary indicators, trade journals, risk calculators, and market scanners to enhance your trading edge.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Membership Plans -->
+        <section id="membership" style="background-color: #f8f9fa;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Choose Your Membership Plan</h2>
+                    <p>Select the tier that matches your trading goals and experience level</p>
+                </div>
+                <div class="plans-grid">
+                    <div class="plan-card">
+                        <div class="plan-header">
+                            <h3>Basic</h3>
+                            <p>For beginners starting their trading journey</p>
+                        </div>
+                        <div class="plan-price">$29<span>/month</span></div>
+                        <div class="plan-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> 50+ Beginner Video Lessons</li>
+                                <li><i class="fas fa-check"></i> Weekly Market Updates</li>
+                                <li><i class="fas fa-check"></i> Basic Trading Templates</li>
+                                <li><i class="fas fa-times" style="color: #e74c3c;"></i> Live Coaching Sessions</li>
+                                <li><i class="fas fa-times" style="color: #e74c3c;"></i> Advanced Strategy Library</li>
+                                <li><i class="fas fa-times" style="color: #e74c3c;"></i> Proprietary Indicators</li>
+                            </ul>
+                        </div>
+                        <div class="plan-button">
+                            <button class="btn btn-outline" data-plan="basic">Select Basic Plan</button>
+                        </div>
+                    </div>
+                    
+                    <div class="plan-card popular">
+                        <div class="plan-badge">MOST POPULAR</div>
+                        <div class="plan-header">
+                            <h3>Premium</h3>
+                            <p>For serious traders ready to level up</p>
+                        </div>
+                        <div class="plan-price">$79<span>/month</span></div>
+                        <div class="plan-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> 200+ Video Lessons</li>
+                                <li><i class="fas fa-check"></i> Daily Market Analysis</li>
+                                <li><i class="fas fa-check"></i> Advanced Trading Templates</li>
+                                <li><i class="fas fa-check"></i> Weekly Live Coaching</li>
+                                <li><i class="fas fa-check"></i> Strategy Library</li>
+                                <li><i class="fas fa-times" style="color: #e74c3c;"></i> Proprietary Indicators</li>
+                            </ul>
+                        </div>
+                        <div class="plan-button">
+                            <button class="btn btn-primary" data-plan="premium">Select Premium Plan</button>
+                        </div>
+                    </div>
+                    
+                    <div class="plan-card">
+                        <div class="plan-header">
+                            <h3>Pro</h3>
+                            <p>For professional traders seeking an edge</p>
+                        </div>
+                        <div class="plan-price">$149<span>/month</span></div>
+                        <div class="plan-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> 500+ Video Lessons</li>
+                                <li><i class="fas fa-check"></i> Real-time Market Signals</li>
+                                <li><i class="fas fa-check"></i> All Trading Templates</li>
+                                <li><i class="fas fa-check"></i> Daily Live Coaching</li>
+                                <li><i class="fas fa-check"></i> Full Strategy Library</li>
+                                <li><i class="fas fa-check"></i> All Proprietary Indicators</li>
+                            </ul>
+                        </div>
+                        <div class="plan-button">
+                            <button class="btn btn-outline" data-plan="pro">Select Pro Plan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resource Library -->
+        <section id="resources">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Resource Library</h2>
+                    <p>Filter resources by access level or content type</p>
+                </div>
+                <div class="resource-filters">
+                    <button class="filter-btn active" data-filter="all">All Resources</button>
+                    <button class="filter-btn" data-filter="free">Free</button>
+                    <button class="filter-btn" data-filter="premium">Premium</button>
+                    <button class="filter-btn" data-filter="pro">Pro</button>
+                    <button class="filter-btn" data-filter="video">Videos</button>
+                    <button class="filter-btn" data-filter="pdf">PDF Guides</button>
+                    <button class="filter-btn" data-filter="tool">Tools</button>
+                </div>
+                <div class="resources-grid">
+                    <div class="resource-card" data-access="free" data-type="video">
+                        <div class="resource-img" style="background-image: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+                        <div class="resource-content">
+                            <span class="resource-access free">Free</span>
+                            <h4>Introduction to Technical Analysis</h4>
+                            <p>Learn the basics of reading charts and identifying key patterns in this comprehensive beginner's guide.</p>
+                            <div style="margin-top: 15px;">
+                                <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Access Resource</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card" data-access="premium" data-type="pdf">
+                        <div class="resource-img" style="background-image: url('https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+                        <div class="resource-content">
+                            <span class="resource-access premium">Premium</span>
+                            <h4>Advanced Options Strategy Playbook</h4>
+                            <p>Detailed guide to sophisticated options strategies with real-world examples and risk management techniques.</p>
+                            <div style="margin-top: 15px;">
+                                <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Upgrade to Access</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card" data-access="pro" data-type="tool">
+                        <div class="resource-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+                        <div class="resource-content">
+                            <span class="resource-access pro">Pro</span>
+                            <h4>Market Sentiment Analyzer Tool</h4>
+                            <p>Our proprietary tool that aggregates multiple sentiment indicators to identify market extremes.</p>
+                            <div style="margin-top: 15px;">
+                                <button class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Pro Members Only</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Podcast Section -->
+        <section id="podcast" style="background-color: #f8f9fa;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>TradeMaster Pro Podcast</h2>
+                    <p>Weekly insights, interviews with trading experts, and market analysis</p>
+                </div>
+                <div class="podcast-grid">
+                    <div class="podcast-card">
+                        <div class="podcast-img" style="background-image: url('https://images.unsplash.com/photo-1478737270239-2f02b77fc618?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+                        <div class="podcast-content">
+                            <h4>Market Volatility Strategies for 2024</h4>
+                            <p>Learn how to adapt your trading approach to capitalize on increased market volatility while managing risk effectively.</p>
+                            <div class="podcast-meta">
+                                <span><i class="far fa-clock"></i> 45 min</span>
+                                <span><i class="far fa-calendar"></i> Jan 15, 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="podcast-card">
+                        <div class="podcast-img" style="background-image: url('https://images.unsplash.com/photo-1559526324-4b87b5e36e44?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80');"></div>
+                        <div class="podcast-content">
+                            <h4>Interview with a Hedge Fund Manager</h4>
+                            <p>Exclusive conversation with Sarah Johnson about institutional trading strategies and market outlook.</p>
+                            <div class="podcast-meta">
+                                <span><i class="far fa-clock"></i> 62 min</span>
+                                <span><i class="far fa-calendar"></i> Jan 8, 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="podcast-card">
+                        <div class="podcast-img" style="background-image: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+                        <div class="podcast-content">
+                            <h4>Psychology of Successful Trading</h4>
+                            <p>How to develop the mental fortitude needed to stick to your trading plan during winning and losing streaks.</p>
+                            <div class="podcast-meta">
+                                <span><i class="far fa-clock"></i> 38 min</span>
+                                <span><i class="far fa-calendar"></i> Jan 1, 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">TradeMaster Pro</div>
+                    <p>Professional trade coaching and resources to help you master the financial markets and achieve consistent trading results.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#membership">Membership Plans</a></li>
+                        <li><a href="#resources">Resource Library</a></li>
+                        <li><a href="#podcast">Podcast</a></li>
+                        <li><a href="#articles">Articles</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Membership</h4>
+                    <ul>
+                        <li><a href="#" id="footerLogin">Login</a></li>
+                        <li><a href="#" id="footerSignup">Sign Up</a></li>
+                        <li><a href="#dashboard">Member Dashboard</a></li>
+                        <li><a href="#">Account Settings</a></li>
+                        <li><a href="#">Billing & Payments</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> support@trademasterpro.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Trading Street, Finance City</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 TradeMaster Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Dashboard (Initially Hidden) -->
+    <div class="dashboard-container" id="dashboard" style="display: none;">
+        <div class="dashboard-sidebar">
+            <div class="sidebar-menu">
+                <li><a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-video"></i> My Courses</a></li>
+                <li><a href="#"><i class="fas fa-book"></i> Resource Library</a></li>
+                <li><a href="#"><i class="fas fa-calendar-alt"></i> Live Sessions</a></li>
+                <li><a href="#"><i class="fas fa-chart-line"></i> Trading Tools</a></li>
+                <li><a href="#"><i class="fas fa-user-circle"></i> My Profile</a></li>
+                <li><a href="#"><i class="fas fa-credit-card"></i> Billing</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </div>
+        </div>
+        <div class="dashboard-content">
+            <div class="dashboard-header">
+                <h2>Member Dashboard</h2>
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <span style="background-color: var(--accent); color: var(--dark); padding: 8px 15px; border-radius: 30px; font-weight: 600;">Premium Member</span>
+                    <div style="width: 40px; height: 40px; border-radius: 50%; background-color: var(--primary); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">JS</div>
+                </div>
+            </div>
+            
+            <div class="dashboard-cards">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="dashboard-card-info">
+                        <h3>24</h3>
+                        <p>Videos Watched</p>
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="dashboard-card-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="dashboard-card-info">
+                        <h3>3</h3>
+                        <p>Live Sessions Attended</p>
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="dashboard-card-icon">
+                        <i class="fas fa-file-download"></i>
+                    </div>
+                    <div class="dashboard-card-info">
+                        <h3>12</h3>
+                        <p>Resources Downloaded</p>
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="dashboard-card-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="dashboard-card-info">
+                        <h3>42</h3>
+                        <p>Days Until Renewal</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background-color: white; border-radius: var(--radius); padding: 30px; box-shadow: var(--shadow);">
+                <h3>Continue Learning</h3>
+                <p style="margin-bottom: 25px;">Pick up where you left off in your trading education journey.</p>
+                
+                <div style="display: flex; align-items: center; background-color: #f9f9f9; padding: 20px; border-radius: var(--radius); margin-bottom: 20px;">
+                    <div style="width: 60px; height: 60px; background-color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 20px; color: white; font-size: 1.5rem;">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div style="flex: 1;">
+                        <h4 style="margin-bottom: 5px;">Advanced Technical Analysis - Part 3</h4>
+                        <p style="margin-bottom: 5px; font-size: 0.9rem;">Continue watching: 24:15 / 45:30</p>
+                        <div style="height: 5px; background-color: var(--light-gray); border-radius: 3px; overflow: hidden;">
+                            <div style="width: 53%; height: 100%; background-color: var(--accent);"></div>
+                        </div>
+                    </div>
+                    <button class="btn">Continue</button>
+                </div>
+                
+                <div style="display: flex; align-items: center; background-color: #f9f9f9; padding: 20px; border-radius: var(--radius);">
+                    <div style="width: 60px; height: 60px; background-color: var(--secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 20px; color: white; font-size: 1.5rem;">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div style="flex: 1;">
+                        <h4 style="margin-bottom: 5px;">Options Trading Playbook</h4>
+                        <p style="margin-bottom: 5px; font-size: 0.9rem;">Last accessed: 2 days ago</p>
+                    </div>
+                    <button class="btn">Open</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login/Register Pages (Initially Hidden) -->
+    <div class="auth-container" id="authPages" style="display: none;">
+        <div class="auth-box">
+            <div class="auth-tabs">
+                <div class="auth-tab active" id="loginTabBtn">Login</div>
+                <div class="auth-tab" id="registerTabBtn">Register</div>
+            </div>
+            <div class="auth-form active" id="loginFormPage">
+                <h3 style="text-align: center; margin-bottom: 30px;">Login to Your Account</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="pageLoginEmail">Email Address</label>
+                        <input type="email" id="pageLoginEmail" class="form-control" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pageLoginPassword">Password</label>
+                        <input type="password" id="pageLoginPassword" class="form-control" placeholder="Your password" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Login to Account</button>
+                    </div>
+                </form>
+            </div>
+            <div class="auth-form" id="registerFormPage">
+                <h3 style="text-align: center; margin-bottom: 30px;">Create New Account</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="pageSignupName">Full Name</label>
+                        <input type="text" id="pageSignupName" class="form-control" placeholder="John Smith" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pageSignupEmail">Email Address</label>
+                        <input type="email" id="pageSignupEmail" class="form-control" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pageSignupPassword">Password</label>
+                        <input type="password" id="pageSignupPassword" class="form-control" placeholder="Create a password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pageMembershipPlan">Select Membership Plan</label>
+                        <select id="pageMembershipPlan" class="form-control" required>
+                            <option value="">Choose a plan</option>
+                            <option value="basic">Basic - $29/month</option>
+                            <option value="premium">Premium - $79/month</option>
+                            <option value="pro">Pro - $149/month</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        const loginBtn = document.getElementById('loginBtn');
+        const signupBtn = document.getElementById('signupBtn');
+        const dashboardLink = document.getElementById('dashboardLink');
+        const loginModal = document.getElementById('loginModal');
+        const signupModal = document.getElementById('signupModal');
+        const closeLoginModal = document.getElementById('closeLoginModal');
+        const closeSignupModal = document.getElementById('closeSignupModal');
+        const switchToSignup = document.getElementById('switchToSignup');
+        const switchToLogin = document.getElementById('switchToLogin');
+        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const resourceCards = document.querySelectorAll('.resource-card');
+        const planButtons = document.querySelectorAll('.plan-button .btn');
+        const mainContent = document.querySelector('main');
+        const footer = document.querySelector('footer');
+        const dashboard = document.getElementById('dashboard');
+        const authPages = document.getElementById('authPages');
+        const loginTabBtn = document.getElementById('loginTabBtn');
+        const registerTabBtn = document.getElementById('registerTabBtn');
+        const loginFormPage = document.getElementById('loginFormPage');
+        const registerFormPage = document.getElementById('registerFormPage');
+        const footerLogin = document.getElementById('footerLogin');
+        const footerSignup = document.getElementById('footerSignup');
+        const logoutBtn = document.getElementById('logoutBtn');
+        
+        // Toggle Mobile Menu
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Show Login Modal
+        loginBtn.addEventListener('click', () => {
+            loginModal.style.display = 'flex';
+            signupModal.style.display = 'none';
+        });
+        
+        // Show Signup Modal
+        signupBtn.addEventListener('click', () => {
+            signupModal.style.display = 'flex';
+            loginModal.style.display = 'none';
+        });
+        
+        // Footer Login/Signup
+        footerLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginModal.style.display = 'flex';
+        });
+        
+        footerSignup.addEventListener('click', (e) => {
+            e.preventDefault();
+            signupModal.style.display = 'flex';
+        });
+        
+        // Close Modals
+        closeLoginModal.addEventListener('click', () => {
+            loginModal.style.display = 'none';
+        });
+        
+        closeSignupModal.addEventListener('click', () => {
+            signupModal.style.display = 'none';
+        });
+        
+        // Switch between Login and Signup in modals
+        switchToSignup.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginModal.style.display = 'none';
+            signupModal.style.display = 'flex';
+        });
+        
+        switchToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            signupModal.style.display = 'none';
+            loginModal.style.display = 'flex';
+        });
+        
+        // Switch between Login and Register in auth pages
+        loginTabBtn.addEventListener('click', () => {
+            loginTabBtn.classList.add('active');
+            registerTabBtn.classList.remove('active');
+            loginFormPage.classList.add('active');
+            registerFormPage.classList.remove('active');
+        });
+        
+        registerTabBtn.addEventListener('click', () => {
+            registerTabBtn.classList.add('active');
+            loginTabBtn.classList.remove('active');
+            registerFormPage.classList.add('active');
+            loginFormPage.classList.remove('active');
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                loginModal.style.display = 'none';
+            }
+            if (e.target === signupModal) {
+                signupModal.style.display = 'none';
+            }
+        });
+        
+        // Resource Filtering
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                resourceCards.forEach(card => {
+                    const access = card.getAttribute('data-access');
+                    const type = card.getAttribute('data-type');
+                    
+                    if (filter === 'all' || filter === access || filter === type) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Plan Selection
+        planButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const plan = btn.getAttribute('data-plan');
+                alert(`You've selected the ${plan.toUpperCase()} plan. In a real implementation, this would redirect to Stripe checkout.`);
+                signupModal.style.display = 'flex';
+                document.getElementById('membershipPlan').value = plan;
+            });
+        });
+        
+        // Form Submission (Demo Only)
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            if (email && password) {
+                alert('Login successful! In a real implementation, this would authenticate with your backend.');
+                loginModal.style.display = 'none';
+                showDashboard();
+            }
+        });
+        
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const plan = document.getElementById('membershipPlan').value;
+            
+            if (name && email && password && plan) {
+                alert(`Account created for ${name} with ${plan} plan! In a real implementation, this would process payment and create a user account.`);
+                signupModal.style.display = 'none';
+                showDashboard();
+            }
+        });
+        
+        // Show Dashboard (Simulated login)
+        dashboardLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showDashboard();
+        });
+        
+        // Logout
+        logoutBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showMainContent();
+        });
+        
+        function showDashboard() {
+            mainContent.style.display = 'none';
+            footer.style.display = 'none';
+            dashboard.style.display = 'flex';
+            authPages.style.display = 'none';
+            
+            // Close mobile menu if open
+            mainNav.classList.remove('active');
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+        
+        function showMainContent() {
+            mainContent.style.display = 'block';
+            footer.style.display = 'block';
+            dashboard.style.display = 'none';
+            authPages.style.display = 'none';
+        }
+        
+        function showAuthPages() {
+            mainContent.style.display = 'none';
+            footer.style.display = 'none';
+            dashboard.style.display = 'none';
+            authPages.style.display = 'flex';
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') return;
+                
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+        
+        // Initialize with main content visible
+        showMainContent();
+    </script>
+</body>
+</html>
